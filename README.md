@@ -1,14 +1,98 @@
 # mtproto_by_levens
-Easy and fast install MTProto.
 
-🇷🇺 Скрипт который быстро установит прокси для Telegram на ваш сервер. Будет работает даже при включенном клиенте XRay.
+Easy and fast MTProto proxy install for Telegram ([Telemt](https://github.com/telemt/telemt)).
 
-Тестировалось на: последней версии клиента Telegram (20.05.26), сервер на Debian 12.
+Works with **XRay Full TUN** (dedicated install mode).
 
-Установка: 
+---
 
-🇬🇧 A script that quickly installs a Telegram proxy on your server. It works even with the XRay client enabled.
+## 🇷🇺 Русский
 
-Tested on: latest version of the Telegram client (20.05.26), server running Debian 12.
+Скрипт быстро установит MTProto-прокси на ваш VPS (Debian/Ubuntu, **root**).
 
-Installation:
+**Проверено:** Telegram (20.05.26), Debian 12.
+
+### Установка
+
+Скопируйте и выполните на сервере:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh -o mtproto.sh && chmod +x mtproto.sh && bash mtproto.sh
+```
+
+Одной строкой без сохранения файла:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh | bash
+```
+
+### Режимы при установке
+
+| Режим | Описание |
+|--------|----------|
+| **1 — Xray** | SNI = IP сервера. Рекомендуется, если включён Full TUN / XRay |
+| **2 — Fake-TLS** | SNI = свой домен (`starlink.com` и т.д.) |
+
+Без меню (флаги):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh -o mtproto.sh && chmod +x mtproto.sh && bash mtproto.sh --mode xray
+```
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh -o mtproto.sh && chmod +x mtproto.sh && bash mtproto.sh --mode faketls --sni starlink.com
+```
+
+### Канал-спонсор (@MTProxybot)
+
+После установки скрипт попросит **ad_tag** от [@MTProxybot](https://t.me/MTProxybot).  
+Добавить позже:
+
+```bash
+bash mtproto.sh --tag ВАШ_32_HEX_ТЕГ
+```
+
+---
+
+## 🇬🇧 English
+
+Quick Telegram MTProxy setup on your VPS (Debian/Ubuntu, **root**).
+
+**Tested:** Telegram (20.05.26), Debian 12.
+
+### Installation
+
+Copy and run on the server:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh -o mtproto.sh && chmod +x mtproto.sh && bash mtproto.sh
+```
+
+One-liner:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/andrey-levens/mtproto_by_levens/main/mtproto.sh | bash
+```
+
+### Modes
+
+| Mode | Description |
+|------|-------------|
+| **1 — Xray** | SNI = server IP (works with XRay Full TUN) |
+| **2 — Fake-TLS** | SNI = custom domain |
+
+```bash
+bash mtproto.sh --mode xray
+```
+
+```bash
+bash mtproto.sh --mode faketls --sni starlink.com
+```
+
+---
+
+## Notes
+
+- Do not use the same port for **MTProxy** and **VLESS** on one server (e.g. MTProxy `443`, Xray `8443`).
+- After install, use the **ee** link printed by the script in Telegram.
+- Based on [telemt/telemt](https://github.com/telemt/telemt).
