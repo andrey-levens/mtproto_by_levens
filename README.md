@@ -3,7 +3,6 @@
 Easy and fast MTProto proxy install for Telegram ([Telemt](https://github.com/telemt/telemt)).
 
 Works with **XRay Full TUN** (dedicated install mode).
-////////////////////////////////////////////////////////////
 
 Простая и быстрая установка прокси MTProto для Telegram ([Telemt](https://github.com/telemt/telemt)).
 
